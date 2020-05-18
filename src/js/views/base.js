@@ -3,6 +3,7 @@ export const elements = {
   searchInput: document.querySelector(".search__field"),
   searchResList: document.querySelector(".results__list"),
   searchRes: document.querySelector(".results"),
+  searchResPages: document.querySelector(".results__pages"),
 };
 
 export const elementStrings = {
@@ -12,7 +13,8 @@ export const elementStrings = {
 export const renderLoader = (parent) => {
   const loader = `
   <div class="${elementStrings.loader}">
-   <svg><use href="img/icons.svg#icon-cw"></use>
+   <svg>
+   <use href="img/icons.svg#icon-cw"></use>
    </svg>  
   </div>
   `;

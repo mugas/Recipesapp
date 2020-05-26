@@ -22,7 +22,7 @@ const formatCount = (count) => {
     }
     const fr = new Fraction(count - int);
     return `
-    ${int} ${fr.numerator}/${fr.denominator}`;
+      ${int} ${fr.numerator}/${fr.denominator}`;
   }
   return "?";
 };

@@ -15,9 +15,6 @@ export default class Recipe {
       this.image = res.data.recipe.image_url;
       this.url = res.data.recipe.source_url;
       this.ingredients = res.data.recipe.ingredients;
-
-      console.log(res);
-
       // this.result = res.data.recipes;
     } catch (error) {
       console.log(error);
@@ -79,6 +76,7 @@ export default class Recipe {
         // Ex 4 1/2 cups, arrCount is [4,1/2]
         // Ex 4 cups, arrCount is [4]
         const arrCount = arrIng.slice(0, unitIndex);
+
         let count;
         if (arrCount.length === 1) {
           count = eval(arrIng[0].replace("-", "+"));

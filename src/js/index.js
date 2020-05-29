@@ -15,7 +15,6 @@ import { elements, renderLoader, clearLoader } from "./views/base";
  *- Liked recipe
  */
 const state = {};
-window.state = state;
 
 //! !Search Controller
 const controlSearch = async () => {
@@ -139,8 +138,6 @@ elements.shopping.addEventListener("click", (e) => {
 /**
  * Like Controller
  */
-// Testing
-state.likes = new Likes();
 
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
@@ -171,6 +168,21 @@ const controlLike = () => {
   likesViews.toggleLikeMenu(state.likes.getNumberLikes());
 };
 
+// Restore likes recipes on page load
+
+window.addEventListener("load", () => {
+  state.likes = new Likes();
+
+  // Restore Likes
+  state.likes.readStorage();
+
+  // Toggle like menu button
+  likesViews.toggleLikeMenu(state.likes.getNumberLikes());
+
+  // Render the existing likes
+  state.likes.likes.forEach((like) => likesViews.renderLike(like));
+});
+
 // Handling recipe button clicks
 elements.recipe.addEventListener("click", (e) => {
   if (e.target.matches(".btn-decrease, .btn-decrease *")) {
@@ -193,5 +205,3 @@ elements.recipe.addEventListener("click", (e) => {
     controlLike();
   }
 });
-
-window.l = new List();
